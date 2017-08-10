@@ -1,10 +1,10 @@
 # DropIt
 
-This is a proof-of-concept implementation of the DropIt library. 
+This is a proof-of-concept implementation of the DropIt library.
 
 # Usage
-To use DropIt, simply include `libdropit.h`. 
-To protect a section containing a double fetch, only 3 lines of code have to be added. 
+To use DropIt, simply include `libdropit.h`.
+To protect a section containing a double fetch, only 3 lines of code have to be added.
 
 * First, initialize the library for the section: `doublefetch_t config = doublefetch_init(<retries>);`
 * Second, before the section starts, add `doublefetch_start(config);`
@@ -14,7 +14,7 @@ That's it, now your code is protected.
 
 # Example
 
-```
+```c
 char buffer[8];
 size_t len;
 // init DropIt
@@ -37,13 +37,17 @@ The repository contains 2 demos. To build them, simply run `make`.
 
 ## demo-strlen
 
-This demo shows how to protect a naive string copy function containing a double-fetch bug using DropIt. 
+![strlen Demo](_images/strlen-demo.gif)
+
+This demo shows how to protect a naive string copy function containing a double-fetch bug using DropIt.
 Run `./strlen-demo-without-dropit` to see how the double-fetch bug can be exploited to crash the application.
 Run `./strlen-demo` to see that the same program with the same exploit is now protected and does not crash anymore.
 
 ## switch-demo
 
-This demo shows a compiler-introduced double-fetch bug which is not visible in the source code. 
+![switch Demo](_images/switch-demo.gif)
+
+This demo shows a compiler-introduced double-fetch bug which is not visible in the source code.
 Run `./switch-demo-without-dropit` to see how the double-fetch bug can be exploited to crash the application.
 Run `./switch-demo` to see that the same program with the same exploit is now protected and does not crash anymore.
- 
+
